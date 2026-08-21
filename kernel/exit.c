@@ -48,7 +48,6 @@
 #include <linux/audit.h> /* for audit_free() */
 #include <linux/resource.h>
 #include <linux/task_io_accounting_ops.h>
-#include <linux/blkdev.h>
 #include <linux/task_work.h>
 #include <linux/fs_struct.h>
 #include <linux/init_task.h>
@@ -1116,7 +1115,7 @@ void __noreturn make_task_dead(int signr)
 
 SYSCALL_DEFINE1(exit, int, error_code)
 {
-	do_exit((error_code&0xff)<<8);
+	do_exit((error_code & 0xff) << 8);
 }
 
 /*
